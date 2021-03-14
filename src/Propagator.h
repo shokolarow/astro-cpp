@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+
 class Body {
 public:
     double m;
@@ -17,6 +18,7 @@ class Propagator {
 public:
     Eigen::MatrixXd u;
     Eigen::RowVectorXd ut;
+    std::vector<Body> bodies;
 
     Propagator(const Eigen::RowVectorXd &init, const std::vector <Body> &bodies, double T, double dt);
     Eigen::RowVectorXd propagate();
@@ -36,6 +38,6 @@ private:
     Eigen::RowVectorXd k4;
 
     void jacob(const Eigen::RowVectorXd &u, Eigen::RowVectorXd &dudt);
-    void rk4(Eigen::RowVectorXd &u);
+    inline void rk4(Eigen::RowVectorXd &u);
 
 };
