@@ -1,10 +1,6 @@
 #include "tools.h"
-#include "constants.h"
-#include <cmath>
-#include <vector>
-#include <iostream>
-#include <iterator>
-#include <ctime>
+
+using namespace EARTH;
 
 datetime::datetime(double yr, double mn, double d, double h, double m, double s) :
         year(yr), month(mn), day(d), hour(h), minute(m), second(s)

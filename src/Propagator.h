@@ -1,17 +1,23 @@
 #pragma once
 
-#include <Eigen/Dense>
 #include <string>
 #include <vector>
+#include <iostream>
+#include <cmath>
 
+#include <Eigen/Core>
 
-class Body {
-public:
+#include "tools.h"
+#include "constants.h"
+
+struct Body {
     double m;
     double T;
+    double A;
+    double Cd;
     std::string name;
 
-    Body(double mass, double thrust, std::string name);
+    Body(double mass, double thrust, double area, double drag_coeff, std::string name);
 };
 
 class Propagator {
@@ -20,7 +26,7 @@ public:
     Eigen::RowVectorXd ut;
     std::vector<Body> bodies;
 
-    Propagator(const Eigen::RowVectorXd &init, const std::vector <Body> &bodies, double T, double dt);
+    Propagator(const Eigen::RowVectorXd& init, const std::vector<Body> &bodies, double T, double dt);
     Eigen::RowVectorXd propagate();
 
 private:
